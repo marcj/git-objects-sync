@@ -48,9 +48,9 @@ def update_objects(ref, remote_url):
         sys.stdout.write("All objects are already known to the server.\n")
         sys.exit(0)
 
-    print(missing_object_shas)
+    # print(missing_object_shas)
 
-    unpack_process = subprocess.Popen(['ssh', remote_url, 'git-unpack-objects.sh', repo_path], stdin=subprocess.PIPE)
+    unpack_process = subprocess.Popen(['ssh', remote_url, 'git-unpack-objects.sh', repo_path, ref, commit_sha], stdin=subprocess.PIPE)
     pack_process = subprocess.Popen(['git', 'pack-objects', '--stdout', '--all-progress'],
                                     stdin=subprocess.PIPE, stdout=unpack_process.stdin)
     pack_process.communicate(missing_object_shas)
