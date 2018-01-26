@@ -61,3 +61,4 @@ python git-sync.py refs/heads/master
 1. You shouldn't use that if you don't understand what it does.
 2. It overwrites the remote ref, without checking if it was already updated by someone else -> could result in missing commits.
 3. It only works for the latest commit. If you forget one commit (parent for example of the latest commit) your history/reference will break.
+4. Works only for SSH and needs two additional files on the server.
